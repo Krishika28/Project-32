@@ -10,8 +10,10 @@ var ball;
 var slingShot;
 var polygon_img;
 var score = 0;
+var backgroundImg;
 
 function preload(){
+  getbackgroundcolor();
   polygon_img=loadImage("polygon.png");
 }
 
@@ -70,9 +72,9 @@ function setup() {
 
 }
 function draw() {
-  background(56,44,44); 
- 
-  
+  if(backgroundImg)
+    background(backgroundImg);
+      
   textSize(20);
   fill("lightyellow");
   text("Drag the Hexagonal Stone and Release it, to launch it towards the blocks",100,30);
@@ -159,7 +161,7 @@ function mouseReleased(){
 }
 function keyPressed(){
   if (keyCode===32){
-      Slingshot.attach(ball.body);
+      slingShot.attach(this.ball);
   }
 }
 async function getbackgroundcolor(){
@@ -169,10 +171,10 @@ async function getbackgroundcolor(){
   var daytime = responseJSON.datetime;
   var hour = daytime.slice(11,13);
   if(hour >=06 && hour <=19){
-      background(255,153,255)
+      bg= ('light.jpg');
   }
   else{
-    background(56,44,44);
+    bg=('dark.jpg');
   }
-
+  backgroundImg = loadImage(bg);
 }
