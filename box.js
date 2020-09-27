@@ -25,10 +25,10 @@ class box {
       push();
       this.Visibility = this.Visibility-5;
       tint(255,this.Visibility);
-      image(this.image,this.body.position.x,this.body.position.y,50,50);
       pop();
     }
 
+      else{
       var pos = this.body.position;
       var angle = this.body.angle;
       push();
@@ -38,6 +38,6 @@ class box {
     
       rect(0,0,this.width, this.height);
       pop();
-      
     }
   }
+}
